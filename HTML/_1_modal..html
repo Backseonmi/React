@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="modal1.css" rel="stylesheet">
+    <link href="/CSS/modal1.css" rel="stylesheet">
     <script
     src="https://code.jquery.com/jquery-3.6.4.min.js"
     integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
@@ -32,16 +32,33 @@
        </div>   
     </div>  
 
-    <script>    
-    $('form').on('submit', function(e){
-        if(($('#id_txt').val() == '') |
-          ($('#pw_txt').val().length < 6)){
-            alert("아이디나 패스워드를 정확히 입력하세요");
-            e.preventDefault();
-         }  
-    });   
-       
-    </script>
+    <script>
+      // 2. 검은배경을 누르면 모달창 닫는 기능 만들기
+      // document.querySelector('.black-bg').addEventListener('click', function(){
+      //   document.querySelector('.black-bg').classList.remove('show-modal')
+      // })
+  
+      // 3.이벤트 버블링 해결
+      document.querySelector('.black-bg').addEventListener('click', function(e){
+        // e.target //실제로 클릭한 요소
+        // e.currentTarget //지금 이벤트리스너가 달린 곳을 알려줌(this)
+        // document.querySelector('.black-bg').classList.remove('show-modal')
+        // console.log(e.target, e.currentTarget)
+        if(e.target == document.querySelector('.black-bg'))
+          document.querySelector('.black-bg').classList.remove('show-modal')
+      })
+      
+
+      $('form').on('submit', function(e){
+          if(($('#id_txt').val() == '') |
+            ($('#pw_txt').val().length < 6)){
+              alert("아이디나 패스워드를 정확히 입력하세요");
+              e.preventDefault();
+           }  
+      });   
+         
+      </script>
+  
 
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
