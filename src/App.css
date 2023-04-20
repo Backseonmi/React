@@ -9,6 +9,12 @@ div{
   text-align: left;
   border-bottom: 1px solid gray;
 }
+.modal{
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(112, 154, 207, 0.586);
+  text-align: left;
+}
 .black-nav{
   display: flex;
   background-color: black;
@@ -17,8 +23,6 @@ div{
   padding-left: 20px;
 }
 .cursor {
-  width : 200px;
-  height : 200px;
   cursor : pointer;
 }
 
