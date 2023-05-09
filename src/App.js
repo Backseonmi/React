@@ -16,6 +16,8 @@ function App() {
   let[like, likeAdd] = useState(0);
   // useState값이 true라면 modal이 보인다
   let[modal, setModal] = useState(false);
+  //동적 UI를 만들기 위해서는 현재 UI 상태를 state에 저장해 두어야 한다.
+  let[title, setTitle] = useState(0);  //0이면 0번째 제목, 1이면 1번째 제목, 2이면 2번째 제목
 
   // [1,2,3,4,5].map(function(a){
   //   console.log(a)
@@ -66,7 +68,7 @@ function App() {
       {/* 짧게 쓰고 싶을 때 */}
       {/* <Modal/> */}
       {
-        modal == true ? <Modal/> : null
+        // modal == true ? <Modal/> : null
       }
 
       {/* map함수 사용 : 반복되는 컴포넌트를 렌더링하기 위하여 자바스크립트 배열의 내장 함수인 map()를 사용*/}
@@ -100,26 +102,32 @@ function App() {
         제목들.map(function(e, i){
           return(
             <div className = "list">
-              <h4> {제목들[i]} </h4>
+              <h4 onClick={()=>{setModal(true); setTitle(i) }} class = 'cursor'> {제목들[i]} </h4>
               <p>4월 18일</p>
             </div>
           )
         })
       }
 
+      {
+        modal == true ? <Modal title={title} 제목변경1={제목변경} color="pink" title1={제목들}/> : null  //값을 지정해주는 부분(자식에서 props로 받아서 활용한다.)
+      }
+
     </div>
   );
-}
+} //App끝남
 
 // 컴포넌트
-function Modal(){
+function Modal(props){  //부모인 App에서 선언한 '제목들'을 가져오기 위해 props 사용
   return(
     //<></>는 <div> 태그의 줄임
     <>
-      <div className="modal">
-        <h4>제목</h4>
+      <div className="modal" style={{background : props.color}}>
+        <h4>{props.title1[props.title]}</h4>
+        {/*<h4>{제목들[0]}</h4>*/}
         <p>날짜</p>
         <p>상세내용</p>
+        <button onClick={()=>{props.제목변경1(['라이프잇셀프', '벌새', '라이스보이'])}}>글 수정</button>
       </div>
     </>
   )
