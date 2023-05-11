@@ -135,7 +135,7 @@ function App() {
       }}>발행</button>
 
       {
-        modal == true ? <Modal index={title} 제목변경1={제목변경} color="pink" title1={제목들}/> : null  //값을 지정해주는 부분(자식에서 props로 받아서 활용한다.)
+        modal == true ? <Modal index={title} 제목변경1={제목변경} setModal1 = {setModal} color="pink" title1={제목들}/> : null  //값을 지정해주는 부분(자식에서 props로 받아서 활용한다.)
       }
 
     </div>
@@ -153,6 +153,7 @@ function Modal(props){  //부모인 App에서 선언한 '제목들'을 가져오
         <p>날짜</p>
         <p>상세내용</p>
         <button onClick={()=>{props.제목변경1(['라이프잇셀프', '벌새', '라이스보이'])}}>글 수정</button>
+        <button onClick={() => {props.setModal1(false);}}>닫기</button>
       </div>
     </>
   )
